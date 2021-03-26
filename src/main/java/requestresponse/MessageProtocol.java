@@ -1,0 +1,35 @@
+/*
+ * MessageProtocol.java
+ *
+ * Copyright by CRIF AG
+ * Zürich
+ * All rights reserved.
+ */
+package requestresponse;
+
+/**
+ * 
+ *
+ * @author nhqhien
+ * @version $Revision:  $
+ */
+public class MessageProtocol
+{
+    public String handleProtocolMessage(String messageText) {
+        String responseText;
+        if ("MyProtocolMessage".equalsIgnoreCase(messageText)) {
+            responseText = "I recognize your protocol message";
+        } else {
+            responseText = "Unknown protocol message: " + messageText;
+        }
+        
+        return responseText;
+    }
+}
+
+
+
+/*
+ * Changes:
+ * $Log: $
+ */
