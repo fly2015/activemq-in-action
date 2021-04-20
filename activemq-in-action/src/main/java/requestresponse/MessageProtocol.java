@@ -1,8 +1,7 @@
 /*
  * MessageProtocol.java
  *
- * Copyright by CRIF AG
- * Zürich
+ * Copyright by HNG
  * All rights reserved.
  */
 package requestresponse;

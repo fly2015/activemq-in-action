@@ -42,7 +42,7 @@ public class Client implements MessageListener
     }
 
     public Client() {
-        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(Constant.messageBrokerUrl);
         Connection connection;
         try {
             connection = connectionFactory.createConnection();

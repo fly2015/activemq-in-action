@@ -7,6 +7,8 @@
  */
 package requestresponse;
 
+import java.util.concurrent.TimeUnit;
+
 import org.apache.activemq.broker.BrokerService;
 
 /**
@@ -17,12 +19,20 @@ import org.apache.activemq.broker.BrokerService;
  */
 public class ActiveMQBroker
 {
+    private BrokerService broker;
+
     public ActiveMQBroker()
+    {
+
+    }
+
+
+    public void start() throws Exception
     {
         try
         {
             // This message broker is embedded
-            BrokerService broker = new BrokerService();
+            broker = new BrokerService();
             broker.setBrokerName("HNG-Broker-" + 1234);
             broker.setPersistent(false);
             broker.setUseJmx(false);
@@ -35,10 +45,30 @@ public class ActiveMQBroker
             System.out.println("Could not start Broker !");
         }
     }
-    
-    public static void main(String[] args)
+
+
+    public void stop() throws Exception
     {
-        new ActiveMQBroker();
+        if (broker != null)
+        {
+            broker.stop();
+            System.out.println("Broker are stopped !");
+        }
+    }
+    
+    public static void main(String[] args) throws Exception
+    {
+        ActiveMQBroker activeMQBroker = new ActiveMQBroker();
+        while(true)
+        {
+            if(activeMQBroker.broker == null)
+            {
+                activeMQBroker.start();
+            }
+            TimeUnit.SECONDS.sleep(1000);
+        }
+        
+       // broker.stop();
     }
 
 }
